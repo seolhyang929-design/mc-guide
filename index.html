@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>마크 생존 가이드</title>
+  <meta name="description" content="마인크래프트 초보를 위한 비공식 생존 가이드" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Unofficial Fan Guide</p>
+      <h1>마크 생존 가이드</h1>
+      <p class="lead">첫날 살아남기부터 네더 진입까지. 초보가 가장 많이 죽는 지점만 골라서 정리했습니다.</p>
+      <input id="search" type="search" placeholder="검색: 다이아몬드, 크리퍼, 효율..." aria-label="검색" />
+    </div>
+  </header>
+
+  <nav class="tabs wrap" id="tabs" aria-label="섹션">
+    <button class="tab active" data-tab="day1">첫날 생존</button>
+    <button class="tab" data-tab="ores">광물 높이</button>
+    <button class="tab" data-tab="mobs">몹 정보</button>
+    <button class="tab" data-tab="enchant">인챈트</button>
+    <button class="tab" data-tab="tips">꿀팁</button>
+  </nav>
+
+  <main class="wrap">
+    <section class="panel active" id="day1">
+      <h2>첫날 생존 체크리스트</h2>
+      <p class="muted">체크 상태는 이 브라우저에 저장됩니다.</p>
+      <ul class="checklist" id="checklist"></ul>
+      <div class="progress"><span id="progressBar"></span></div>
+      <p class="muted" id="progressText"></p>
+    </section>
+
+    <section class="panel" id="ores">
+      <h2>광물 등장 높이 (Y좌표)</h2>
+      <p class="muted">1.18 이후 기준. 막대는 등장 범위, 진한 부분은 가장 많이 나오는 높이입니다. F3을 눌러 현재 Y값을 확인하세요.</p>
+      <div class="ore-chart" id="oreChart"></div>
+    </section>
+
+    <section class="panel" id="mobs">
+      <h2>몹 정보</h2>
+      <div class="filter-row">
+        <button class="chip active" data-mob="all">전체</button>
+        <button class="chip" data-mob="적대">적대</button>
+        <button class="chip" data-mob="중립">중립</button>
+        <button class="chip" data-mob="우호">우호</button>
+      </div>
+      <div class="cards" id="mobCards"></div>
+    </section>
+
+    <section class="panel" id="enchant">
+      <h2>인챈트 추천 조합</h2>
+      <p class="muted">인챈트 테이블은 책장 15개로 둘러싸야 최대 레벨(30)이 나옵니다.</p>
+      <div class="cards" id="enchantCards"></div>
+    </section>
+
+    <section class="panel" id="tips">
+      <h2>알아두면 덜 죽는 팁</h2>
+      <ul class="tips" id="tipList"></ul>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <p>이 페이지는 비공식 팬 가이드이며 Mojang 또는 Microsoft와 무관합니다. 수치는 Java Edition 기준이며 버전에 따라 다를 수 있습니다.</p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
