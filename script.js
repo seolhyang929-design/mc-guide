@@ -76,7 +76,9 @@
   const mobWrap = $("#mobCards");
   function renderMobs(filter) {
     mobWrap.innerHTML = "";
-    MOBS.filter((m) => filter === "all" || m.type === filter).forEach((m) => {
+    const shown = MOBS.filter((m) => filter === "all" || m.type === filter);
+    $("#mobCount").textContent = `총 ${MOBS.length}종 중 ${shown.length}종 표시 · 공격력은 일반(Normal) 난이도 기준`;
+    shown.forEach((m) => {
       const c = document.createElement("article");
       c.className = "card type-" + m.type;
       c.innerHTML = `
