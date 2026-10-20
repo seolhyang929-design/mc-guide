@@ -106,15 +106,32 @@
 
   // ---------- 인챈트 ----------
   const enWrap = $("#enchantCards");
-  ENCHANTS.forEach((e) => {
-    const c = document.createElement("article");
-    c.className = "card";
-    c.innerHTML = `
-      <h3>${e.item}</h3>
-      <ul class="enchant-list">${e.list.map((x) => `<li>${x}</li>`).join("")}</ul>
-      <p class="tip">${e.why}</p>`;
-    enWrap.appendChild(c);
+  let enTotal = 0;
+  ENCHANTS.forEach((g) => {
+    const h = document.createElement("h3");
+    h.className = "group-title";
+    h.textContent = g.group;
+    enWrap.appendChild(h);
+    const grid = document.createElement("div");
+    grid.className = "cards";
+    g.items.forEach((e) => {
+      enTotal++;
+      const roman = ["", "I", "II", "III", "IV", "V"][e.max] || e.max;
+      const treasure = /보물 인챈트/.test(e.note);
+      const c = document.createElement("article");
+      c.className = "card" + (treasure ? " treasure" : "");
+      c.innerHTML = `
+        <div class="card-head">
+          <h4>${e.name} <span class="eng">${e.eng}</span></h4>
+          <span class="badge">최대 ${roman}</span>
+        </div>
+        <p class="desc">${e.desc}</p>
+        ${e.note ? `<p class="tip">${e.note}</p>` : ""}`;
+      grid.appendChild(c);
+    });
+    enWrap.appendChild(grid);
   });
+  $("#enchantCount").textContent = `총 ${enTotal}종 · 보물 인챈트(테두리 금색)는 인챈트 테이블에서 안 나오고 상자·거래·낚시로만 얻습니다.`;
 
   // ---------- 팁 ----------
   const tipList = $("#tipList");
